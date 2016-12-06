@@ -5,8 +5,11 @@ var bodyParser = require( 'body-parser' );
 var urlEncodedParser = bodyParser.urlencoded( { extended: false } );
 var port = process.env.PORT || 8080;
 
+var eventArray = [];
+
 app.listen( port, function( req, res ){
   console.log( 'server listening on', port );
+
 }); // end spin up server
 
 // base url
@@ -19,6 +22,9 @@ app.get( '/', function( req, res ){
 app.get( '/testGet', function( req, res ){
   console.log( 'testGet url hit' );
   // do work here
+  // var athleteInfo ={
+  //   events:eventArray
+  // };
   // assemble object to return
   var objectToReturn = {
     field0: 'I came from testGet on server'
@@ -30,13 +36,18 @@ app.get( '/testGet', function( req, res ){
 // testPost
 app.post( '/testPost', urlEncodedParser, function( req, res ){
   console.log( 'testPost url hit. req.body:', req.body );
+  eventArray.push(req.body);
+  console.log(eventArray);
   // do work here
   // assemble object to return
+  var athleteInfo ={
+    events:eventArray
+  };
   var objectToReturn = {
     field0: 'I came from testPost on server'
   }; // end object to return
   // return objectToReturn
-  res.send( objectToReturn );
+  res.send( athleteInfo );
 }); // end testPost
 
 // static folder
