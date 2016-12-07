@@ -30,7 +30,7 @@ app.get( '/testGet', function( req, res ){
     field0: 'I came from testGet on server'
   }; // end object to return
   // return objectToReturn
-  res.send( objectToReturn );
+  res.send( eventArray );
 }); // end testGet
 
 // testPost

@@ -25,7 +25,12 @@ $( document ).ready( function(){
       url: '/testGet',
       success: function( response ){
         console.log( 'back from get call:', response );
-        $('#whateves').append(response);
+        for (var i = 0; i < response.length; i++) {
+
+
+        $('#whateves').append(response[i].award);
+      }
+
       },
       error: function(){
         console.log( 'error with ajax call...');
@@ -52,12 +57,12 @@ $( document ).ready( function(){
       data: objectToSend,
       success: function( response ){
         console.log( 'back from post call:', response );
-        $('#whateves').append(response.events[0]);
       },
       error: function(){
         console.log( 'error with ajax call...');
       }
     });
+
 
   }; // end getData
 
