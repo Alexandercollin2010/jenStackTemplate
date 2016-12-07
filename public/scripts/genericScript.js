@@ -16,6 +16,7 @@ $( document ).ready( function(){
   //   };
   //
   // }
+var diffArray = [];
 
   // test get function
   var getData = function(){
@@ -27,10 +28,10 @@ $( document ).ready( function(){
         console.log( 'back from get call:', response );
         $('#whateves').html(''); //empty html before appending
         for (var i = 0; i < response.length; i++) {
-
-
         $('#whateves').append('<p>' + '<strong>Awards: </strong>' + response[i].award + '</p>');
+
       }
+
 
       },
       error: function(){
@@ -39,6 +40,7 @@ $( document ).ready( function(){
 
     });
   }; // end getData
+
 
   // test get function
   var postData = function(){
@@ -78,5 +80,10 @@ $( document ).ready( function(){
     postData();
 
   }); // end testGetButton
+
+  $('#sort').on('click', function(){
+    diffArray.sort();
+  });
+
 
 }); //end doc ready
