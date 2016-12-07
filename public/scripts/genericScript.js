@@ -25,10 +25,11 @@ $( document ).ready( function(){
       url: '/testGet',
       success: function( response ){
         console.log( 'back from get call:', response );
+        $('#whateves').html(''); //empty html before appending
         for (var i = 0; i < response.length; i++) {
 
 
-        $('#whateves').append(response[i].award);
+        $('#whateves').append('<p>' + '<strong>Awards: </strong>' + response[i].award + '</p>');
       }
 
       },
